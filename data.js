@@ -122,15 +122,17 @@ Ciascuna icona ha una proprietà "color": utilizzare questa proprietà per visua
 Milestone 3
 Aggiungere alla pagina una select in cui le options corrispondono ai vari tipi di icone (animal, vegetable, user). Quando l'utente seleziona un tipo dalla select, visualizzare solamente le icone corrispondenti.*/
 
-let container = document.querySelector('.container')
+
+let container = document.querySelector('.container');
+
+// Ciclo per gli elementi dell'array
 for (let i = 0; i < icons.length; i++) {
     let element = icons[i];
-
     // Creo l'html da inserire
     let card = `<div class="card-icons">
-					<i class="icons-animals ${element.family} ${element.prefix}${element.name}"></i>
+					<i class="${element.family} ${element.prefix}${element.name} ${element.type}"></i>
 					<p>${element.name}</p>
 				</div>`;
                 container.innerHTML += card;
-        
     }   
+	
