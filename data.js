@@ -125,14 +125,80 @@ Aggiungere alla pagina una select in cui le options corrispondono ai vari tipi d
 
 let container = document.querySelector('.container');
 
-// Ciclo per gli elementi dell'array
-for (let i = 0; i < icons.length; i++) {
-    let element = icons[i];
-    // Creo l'html da inserire
-    let card = `<div class="card-icons">
+icons.forEach((element) => {
+	let card = `<div class="card-icons">
 					<i class="${element.family} ${element.prefix}${element.name} ${element.type}"></i>
 					<p>${element.name}</p>
 				</div>`;
                 container.innerHTML += card;
-    }   
-	
+})
+
+let animalIcon = [];
+let userIcon = [];
+let vegIcon = [];
+		
+icons.forEach(element => {
+		switch (element.type) {
+			case 'animal':
+				animalIcon.push(element);
+				break;
+			case 'vegetable':
+				vegIcon.push(element);
+				break;
+			case 'user':
+				userIcon.push(element);
+				break;
+			}
+});
+
+console.log(animalIcon);
+console.log(vegIcon);
+console.log(userIcon);
+
+let change = document.getElementById('selection');
+
+change.addEventListener('change', function(){
+
+		switch (change.value) {
+			case 'all':
+				container.innerHTML = '';
+				icons.forEach((element) => {
+				let card = `<div class="card-icons">
+								<i class="${element.family} ${element.prefix}${element.name} ${element.type}"></i>
+								<p>${element.name}</p>
+							</div>`;
+				container.innerHTML += card;
+				}  )
+				break;
+			case 'animal':
+				container.innerHTML = '';
+				animalIcon.forEach((element) => {
+				let card = `<div class="card-icons">
+								<i class="${element.family} ${element.prefix}${element.name} ${element.type}"></i>
+								<p>${element.name}</p>
+							</div>`;
+				container.innerHTML += card;
+				}  )
+				break;
+			case 'vegetable':
+				container.innerHTML = '';
+				vegIcon.forEach((element) => {
+				let card = `<div class="card-icons">
+								<i class="${element.family} ${element.prefix}${element.name} ${element.type}"></i>
+								<p>${element.name}</p>
+							</div>`;
+				container.innerHTML += card;
+				}  )
+				break;
+			case 'user':
+				container.innerHTML = '';
+				userIcon.forEach((element) => {
+				let card = `<div class="card-icons">
+								<i class="${element.family} ${element.prefix}${element.name} ${element.type}"></i>
+								<p>${element.name}</p>
+							</div>`;
+				container.innerHTML += card;
+				}  )
+				break;
+			}
+		})
